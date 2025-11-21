@@ -3,6 +3,7 @@ package com.example.ping_pong
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +28,7 @@ class Player : AppCompatActivity() {
 
         val intent = Intent(this@Player,game::class.java)
         var quant = 1
-        val nome = findViewById<Button>(R.id.nome)
+        val nome = findViewById<EditText>(R.id.nome)
         val btn1 = findViewById<Button>(R.id.btn1)
         val btn2 = findViewById<Button>(R.id.btn2)
         val btn4 = findViewById<Button>(R.id.btn4)

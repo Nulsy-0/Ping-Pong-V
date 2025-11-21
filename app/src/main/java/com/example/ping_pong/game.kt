@@ -19,7 +19,7 @@ class game : AppCompatActivity() {
 
 
         val quant = intent.getStringExtra("quant")
-        val nome1 = intent.getStringExtra("nome1")
+        val nome1 = intent.getStringExtra("nome")
         //val nome1 = intent.getStringExtra("nome1")
 
 

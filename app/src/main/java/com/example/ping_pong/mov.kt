@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import kotlin.math.sqrt
-
+/*
 class MainActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var sensorManager: SensorManager
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var back: LinearLayout
 
     private var maxValor: Double = 0.0
-    private var zAnterior: Float = 0f   // para comparar a rotação
+    private var zAnterior: Float = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +39,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         // Inicializa views
         back = findViewById(R.id.meuLayout)
-        velocidadeTv = findViewById(R.id.velocidade)
-        maxTv = findViewById(R.id.top)
 
         // Sensor
         sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
@@ -96,4 +94,4 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         // Não usado
     }
-}
+}*/

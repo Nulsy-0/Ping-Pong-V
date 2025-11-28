@@ -6,39 +6,55 @@ import kotlinx.coroutines.withContext
 
 class UserRepository(context: Context) {
 
+    /*
+    val repo = UserRepository(this)
+    lifecycleScope.launch {
+        repo.InUser("João")
+    }
+    */
+
     private val userDao = DatabaseProvider.getDatabase(context).userDao()
 
-    // Inserir novo utilizador
-    suspend fun inserirUser(nome: String, recorde1: Int, recorde2: Int, recorde4: Int) {
+    // Criar user
+    suspend fun InUser(nome: String) {
         withContext(Dispatchers.IO) {
-            val novoUser = User(
-                nome = nome,
-                recorde1 = recorde1,
-                recorde2 = recorde2,
-                recorde4 = recorde4
-            )
-            userDao.insert(novoUser)
+            val existente = userDao.getUser()
+            if (existente != null) {
+                val novoUser = User(
+                    nome = nome,
+                    recorde1 = 0,
+                    recorde2 = 0
+                )
+                userDao.insert(novoUser)
+            }
         }
     }
 
-    // Atualizar dados de um utilizador
-    suspend fun atualizarUser(user: User) {
-        withContext(Dispatchers.IO) {
-            userDao.update(user)
-        }
-    }
-
-    // Obter todos os utilizadores
-    suspend fun listarUsers(): List<User> {
+    // Obter user
+    suspend fun User(){
         return withContext(Dispatchers.IO) {
-            userDao.getAll()
+            userDao.getUser()
         }
     }
 
-    // Obter um utilizador pelo nome
-    suspend fun obterUserPorNome(nome: String): User? {
+    // Update ao nome
+    suspend fun UserNameUp(nomeN: String){
         return withContext(Dispatchers.IO) {
-            userDao.getByName(nome)
+            userDao.updateNome(id = 1, nome = nomeN)
+        }
+    }
+
+    // Update ao recorde1
+    suspend fun UserR1Up(Rec: Int){
+        return withContext(Dispatchers.IO) {
+            userDao.updateRecorde1(id = 1, valor = Rec)
+        }
+    }
+
+    // Update ao recorde2
+    suspend fun UserR2Up(Rec: Int){
+        return withContext(Dispatchers.IO) {
+            userDao.updateRecorde1(id = 1, valor = Rec)
         }
     }
 }

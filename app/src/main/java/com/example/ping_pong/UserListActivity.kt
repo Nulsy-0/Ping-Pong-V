@@ -1,5 +1,5 @@
 package com.example.ping_pong
-
+/*
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -44,3 +44,4 @@ class UserListActivity : AppCompatActivity() {
         }
     }
 }
+*/

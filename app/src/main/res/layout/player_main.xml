@@ -5,146 +5,124 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Player">
-
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
+    tools:context=".Player"
+    android:background="@color/laranja">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/laranja"
         android:orientation="vertical"
-        android:padding="50dp"
-        android:background="@color/laranja">
+        android:paddingTop="100dp"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="80dp">
 
         <EditText
             android:id="@+id/nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Player Name"
-            android:textColor="@color/white"
             android:background="@drawable/textedit_redondo"
+            android:gravity="center_horizontal"
             android:padding="10dp"
-            android:gravity="center_horizontal"/>
-
+            android:text="Player Name"
+            android:textColor="@color/white"/>
 
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stretchColumns="1"
-            android:padding="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="150dp"
-            android:divider="?android:attr/dividerVertical"
-            android:showDividers="middle"
-            android:backgroundTint="@color/laranja_e"
             android:layout_gravity="center"
-            android:background="@drawable/tabela_redondo">
->
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/tabela_redondo"
+            android:backgroundTint="@color/laranja_e"
+            android:divider="?android:attr/dividerVertical"
+            android:padding="16dp"
+            android:showDividers="middle"
+            android:stretchColumns="1">
 
             <!-- Header -->
             <TableRow
-                android:padding="8dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:padding="8dp">
 
                 <TextView
+                    android:padding="8dp"
                     android:text="Number Of Players"
-                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:padding="8dp" />
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
                     android:text="Records"
-                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:gravity="end"
-                    android:padding="8dp" />
+                    android:textStyle="bold" />
             </TableRow>
 
             <!-- Linha 1 -->
-            <TableRow
-                android:padding="8dp">
+            <TableRow android:padding="8dp">
 
                 <TextView
+                    android:padding="8dp"
                     android:text="1 Player"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:padding="8dp" />
+                    android:textSize="15sp" />
 
                 <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
                     android:text="0 Pts"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:gravity="end"
-                    android:padding="8dp" />
+                    android:textSize="15sp" />
             </TableRow>
 
             <!-- Linha 2 -->
-            <TableRow
-                android:padding="8dp">
+            <TableRow android:padding="8dp">
 
                 <TextView
+                    android:padding="8dp"
                     android:text="2 Players"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:padding="8dp" />
+                    android:textSize="15sp" />
 
                 <TextView
+                    android:gravity="right"
+                    android:padding="8dp"
                     android:text="0 Pts"
                     android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:gravity="end"
-                    android:padding="8dp" />
-            </TableRow>
-
-            <!-- Linha 3 -->
-            <TableRow
-                android:padding="8dp">
-
-                <TextView
-                    android:text="4 Players"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:padding="8dp" />
-
-                <TextView
-                    android:text="0 Pts"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:gravity="end"
-                    android:padding="8dp" />
+                    android:textSize="15sp" />
             </TableRow>
         </TableLayout>
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fundon">
+
+        </ImageView>
 
         <Button
             android:id="@+id/btn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
             android:text="1 Player"
-            android:backgroundTint="@color/blue"/>
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"/>
 
         <Button
             android:id="@+id/btn2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
             android:text="2 Players"
-            android:backgroundTint="@color/blue"/>
-
-        <Button
-            android:id="@+id/btn4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="4 Palyers"
-            android:backgroundTint="@color/blue"/>
-
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

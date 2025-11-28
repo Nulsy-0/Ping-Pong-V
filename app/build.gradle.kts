@@ -8,12 +8,12 @@ plugins {
 android {
     namespace = "com.example.ping_pong"
     compileSdk {
-        version = release(12)
+        version = release(36)
     }
 
     defaultConfig {
         applicationId = "com.example.ping_pong"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"

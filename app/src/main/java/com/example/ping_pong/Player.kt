@@ -22,16 +22,12 @@ class Player : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val imageView: ImageView = findViewById(R.id.imageView)
-        Glide.with(this).load(R.drawable.stick_bug_rick_roll).into(imageView)
-
 
         val intent = Intent(this@Player,game::class.java)
         var quant = 1
         val nome = findViewById<EditText>(R.id.nome)
         val btn1 = findViewById<Button>(R.id.btn1)
         val btn2 = findViewById<Button>(R.id.btn2)
-        val btn4 = findViewById<Button>(R.id.btn4)
 
         btn1.setOnClickListener {
             quant = 1

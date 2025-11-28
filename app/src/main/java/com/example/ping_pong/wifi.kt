@@ -1,5 +1,5 @@
 package com.example.ping_pong
-
+/*
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -240,3 +240,4 @@ class MainActivity : AppCompatActivity() {
         return null
     }
 }
+*/

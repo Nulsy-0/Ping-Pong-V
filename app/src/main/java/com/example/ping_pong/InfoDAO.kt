@@ -4,19 +4,22 @@ import androidx.room.*
 
 @Dao
 interface UserDao {
-    @Query("SELECT * FROM user")
-    fun getAll(): List<User>
-
     @Insert
-    fun insert(user: User)
+    suspend fun insert(user: User): Long
 
-    @Update
-    fun update(user: User)
+    // Obter o único user (ou null se ainda não existir)
+    @Query("SELECT * FROM User LIMIT 1")
+    suspend fun getUser(): User?
 
-    @Delete
-    fun delete(user: User)
+    // Atualizar nome
+    @Query("UPDATE User SET nome = :nome WHERE id = :id")
+    suspend fun updateNome(id: Int, nome: String)
 
-    // Extra: obter um utilizador pelo nome
-    @Query("SELECT * FROM user WHERE nome = :nome LIMIT 1")
-    fun getByName(nome: String): User?
+    // Atualizar recorde1
+    @Query("UPDATE User SET recorde1 = :valor WHERE id = :id")
+    suspend fun updateRecorde1(id: Int, valor: Int)
+
+    // Atualizar recorde2
+    @Query("UPDATE User SET recorde2 = :valor WHERE id = :id")
+    suspend fun updateRecorde2(id: Int, valor: Int)
 }

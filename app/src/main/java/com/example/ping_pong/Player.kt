@@ -5,29 +5,31 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
 import kotlinx.coroutines.launch
 
 class Player : AppCompatActivity() {
 
-
-    val func = UserRepository(this)
-    val intent = Intent(this@Player,game::class.java)
+    private val func by lazy { UserRepository(this) }
     var quant = 1
-    val nome = findViewById<EditText>(R.id.nome)
-    val btn1 = findViewById<Button>(R.id.btn1)
-    val btn2 = findViewById<Button>(R.id.btn2)
+    private lateinit var nome: EditText
+    private lateinit var btn1: Button
+    private lateinit var btn2: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.player_main)
+
+        // Inicializar views
+        nome = findViewById(R.id.nome)
+        btn1 = findViewById(R.id.btn1)
+        btn2 = findViewById(R.id.btn2)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -38,19 +40,15 @@ class Player : AppCompatActivity() {
             func.InUser(nome.text.toString())
         }
 
-
-
         lifecycleScope.launch {
             val tabela = func.User()
             Log.d("teste", tabela.toString())
+            println(tabela)
         }
-
-
 
         btn1.setOnClickListener {
             quant = 1
             teste()
-
         }
 
         btn2.setOnClickListener {
@@ -58,11 +56,15 @@ class Player : AppCompatActivity() {
             teste()
         }
     }
-    fun teste(){
-        val nome1 = nome.text.toString()
-        intent.putExtra("quantidade", quant)
-        intent.putExtra("nome1", nome1)
 
-        startActivity(intent)
+    private fun teste() {
+        val nome1 = nome.text.toString()
+
+        // Criar intent aqui evita o conflito
+        val jogoIntent = Intent(this, game::class.java)
+        jogoIntent.putExtra("quantidade", quant)
+        jogoIntent.putExtra("nome1", nome1)
+
+        startActivity(jogoIntent)
     }
 }

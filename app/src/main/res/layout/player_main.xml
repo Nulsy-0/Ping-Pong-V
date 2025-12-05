@@ -5,17 +5,17 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Player"
-    android:background="@color/laranja">
+    android:background="@color/laranja"
+    tools:context=".Player">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/laranja"
         android:orientation="vertical"
-        android:paddingTop="100dp"
-        android:paddingLeft="100dp"
-        android:paddingRight="100dp"
+        android:paddingTop="50dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="80dp">
 
@@ -26,6 +26,8 @@
             android:background="@drawable/textedit_redondo"
             android:gravity="center_horizontal"
             android:padding="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
             android:text="Player Name"
             android:textColor="@color/white"/>
 
@@ -34,7 +36,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/tabela_redondo"
             android:backgroundTint="@color/laranja_e"
@@ -58,6 +62,7 @@
                 <TextView
                     android:gravity="right"
                     android:padding="8dp"
+                    android:layout_marginRight="15dp"
                     android:text="Records"
                     android:textColor="@color/white"
                     android:textSize="16sp"
@@ -76,6 +81,7 @@
                 <TextView
                     android:gravity="right"
                     android:padding="8dp"
+                    android:layout_marginRight="15dp"
                     android:text="0 Pts"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
@@ -93,6 +99,7 @@
                 <TextView
                     android:gravity="right"
                     android:padding="8dp"
+                    android:layout_marginRight="15dp"
                     android:text="0 Pts"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
@@ -100,8 +107,9 @@
         </TableLayout>
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
             android:src="@drawable/fundon">
 
         </ImageView>
@@ -113,8 +121,8 @@
             android:backgroundTint="@color/blue"
             android:text="1 Player"
             android:layout_marginBottom="20dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
 
         <Button
             android:id="@+id/btn2"
@@ -122,7 +130,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/blue"
             android:text="2 Players"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.ping_pong
 
 import android.os.Bundle
+import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,10 +18,14 @@ class game : AppCompatActivity() {
             insets
         }
 
-
+        val img = findViewById<ImageView>(R.id.img)
         val quant = intent.getStringExtra("quant")
-        val nome1 = intent.getStringExtra("nome")
-        //val nome1 = intent.getStringExtra("nome1")
-        
+        val nome1 = intent.getStringExtra("nome1")
+
+        if(quant.equals("1")){
+            img.setImageResource(R.drawable.fundop1)
+        }else if(quant.equals("2")){
+            img.setImageResource(R.drawable.fundop2)
+        }
     }
 }

@@ -6,13 +6,6 @@ import kotlinx.coroutines.withContext
 
 class UserRepository(context: Context) {
 
-    /*
-    val repo = UserRepository(this)
-    lifecycleScope.launch {
-        repo.InUser("João")
-    }
-    */
-
     private val userDao = DatabaseProvider.getDatabase(context).userDao()
 
     // Criar user

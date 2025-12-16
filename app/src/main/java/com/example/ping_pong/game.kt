@@ -34,7 +34,6 @@ class game : AppCompatActivity() {
         // Coisas para o wifi
         val ip = udp.getLocalIpAddress()
         val n = mutableMapOf(
-            "ip" to ip,
             "n" to 0,
             "p" to 0,
             "chave" to null
@@ -47,12 +46,12 @@ class game : AppCompatActivity() {
                 val resc = msg
 
                 if(n["chave"] == resc["chave"]){
-                    if(resc["ip"] != ip && resc["p"] == 1 && n["p"] == 0){
+                    if(oip != ip && resc["p"] == 1 && n["p"] == 0){
                         dialogEscolha.dismiss()
                         udp.enviarBroadcast(n)
                         img.setImageResource(R.drawable.fundop2)
                         n["p"] = 2
-                    }else if(resc["ip"] != ip && resc["p"] == 2 && n["p"] == 0){
+                    }else if(oip != ip && resc["p"] == 2 && n["p"] == 0){
                         dialogEscolha.dismiss()
                         udp.enviarBroadcast(n)
                         img.setImageResource(R.drawable.fundop1)

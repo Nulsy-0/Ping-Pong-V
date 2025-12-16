@@ -70,9 +70,6 @@ class wifi(private val port: Int = 8888) {
                         val json = JSONObject(msg)
                         val map = json.toMap()
 
-                        if(map["p"] == 1){
-
-                        }
                         callback(ip, map)
 
                     } catch (_: SocketTimeoutException) {}

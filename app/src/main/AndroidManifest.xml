@@ -15,9 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PingPong">
         <activity
-            android:name=".UserListActivity"
-            android:exported="false" />
-        <activity
             android:name=".game"
             android:exported="false" />
         <activity

@@ -8,11 +8,11 @@ class UserRepository(context: Context) {
 
     private val userDao = DatabaseProvider.getDatabase(context).userDao()
 
-    // Criar user
+    // Criar user (cria só se não existir)
     suspend fun InUser(nome: String) {
         withContext(Dispatchers.IO) {
             val existente = userDao.getUser()
-            if (existente != null) {
+            if (existente == null){
                 val novoUser = User(
                     nome = nome,
                     recorde1 = 0,
@@ -24,30 +24,30 @@ class UserRepository(context: Context) {
     }
 
     // Obter user
-    suspend fun User(){
+    suspend fun User(): User? {
         return withContext(Dispatchers.IO) {
             userDao.getUser()
         }
     }
 
     // Update ao nome
-    suspend fun UserNameUp(nomeN: String){
-        return withContext(Dispatchers.IO) {
+    suspend fun UserNameUp(nomeN: String) {
+        withContext(Dispatchers.IO) {
             userDao.updateNome(id = 1, nome = nomeN)
         }
     }
 
     // Update ao recorde1
-    suspend fun UserR1Up(Rec: Int){
-        return withContext(Dispatchers.IO) {
+    suspend fun UserR1Up(Rec: Int) {
+        withContext(Dispatchers.IO) {
             userDao.updateRecorde1(id = 1, valor = Rec)
         }
     }
 
     // Update ao recorde2
-    suspend fun UserR2Up(Rec: Int){
-        return withContext(Dispatchers.IO) {
-            userDao.updateRecorde1(id = 1, valor = Rec)
+    suspend fun UserR2Up(Rec: Int) {
+        withContext(Dispatchers.IO) {
+            userDao.updateRecorde2(id = 1, valor = Rec)
         }
     }
 }

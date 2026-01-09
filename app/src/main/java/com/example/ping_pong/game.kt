@@ -3,18 +3,31 @@ package com.example.ping_pong
 import android.content.Context
 import android.os.Bundle
 import android.widget.*
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import android.content.DialogInterface
 import android.text.InputType
+import android.util.Log
+import android.view.View
+import com.example.ping_pong.SoundPlayer.playPop
+import com.example.ping_pong.SoundPlayer.playPop2
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
+private var n = mutableMapOf(
+    "n" to 0,
+    "p" to 0,
+    "chave" to null
+)
+private val udp = wifi(8888)
+private var ContextSound: Any? = null
+private var speed: Double = 0.0
+private var recAtual2: TextView? = null
 
 class game : AppCompatActivity() {
-
-    private val udp = wifi(8888)
     private lateinit var dialogEscolha: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,21 +41,18 @@ class game : AppCompatActivity() {
         }
         val img = findViewById<ImageView>(R.id.img)
         val recAtual = findViewById<TextView>(R.id.recAtual)
-
+        val tudo = findViewById<View>(R.id.main)
+        recAtual2 = recAtual
+        recAtual.text = "0"
         val quant = intent.getStringExtra("quantidade")
-
         // Coisas para o wifi
         val ip = udp.getLocalIpAddress()
-        val n = mutableMapOf(
-            "n" to 0,
-            "p" to 0,
-            "chave" to null
-        )
+        var teste: Long = 0
+        ContextSound = this
 
         // iniciar receiver
         udp.iniciarReceiver { oip, msg ->
             runOnUiThread {
-
                 val resc = msg
 
                 if(n["chave"] == resc["chave"]){
@@ -57,9 +67,13 @@ class game : AppCompatActivity() {
                         img.setImageResource(R.drawable.fundop1)
                         n["p"] = 1
                     }
-
-                    // receção para o jogo
-
+                    if(((resc["n"] as Int).toLong() < 0) && oip != ip){
+                        // receção para o jogo
+                        teste = (resc["n"] as Int).toLong()
+                        teste *= -1
+                        teste -= (teste - 1)
+                        game(teste, recAtual)
+                    }
                 }
             }
         }
@@ -80,6 +94,12 @@ class game : AppCompatActivity() {
                         udp.enviarBroadcast(n)
                     }
                 }
+            }
+        }
+
+        tudo.setOnClickListener {
+            if (quant.equals("2") && (n["p"] == 1) && (n["n"] == 0)){
+                retorno(-5.0)
             }
         }
 
@@ -124,4 +144,26 @@ class game : AppCompatActivity() {
         super.onDestroy()
         udp.pararReceiver()
     }
+
+    fun game(teste: Long, recAtual: TextView){
+        lifecycleScope.launch{
+            val pausa = teste / 2
+            delay(pausa)
+            playPop(ContextSound as Context)
+        }
+    }
+}
+
+fun retorno(passe: Double){
+    n["n"] = passe.toInt()
+    mov.callback = object : AceleracaoCallback {
+        override fun onAceleracao(valor: Double) {
+            // Aqui recebes o valor da aceleração
+            println("Aceleração recebida: $valor")
+            speed = valor
+        }
+    }
+    playPop2(ContextSound as Context)
+    recAtual2?.text = (recAtual2?.text.toString().toInt() + 1).toString()
+    udp.enviarBroadcast(n)
 }
